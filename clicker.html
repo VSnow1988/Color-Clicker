@@ -10,23 +10,31 @@
              color = '#'  //this is what we'll return!
              for(var i = 0; i < 6; i++) 
              {
-                x = Math.floor((Math.random()*16))
+                x = Math.floor((Math.random()*16));
                 color += rgb[x]; 
              }
              return color;
           }
 		  
+		  var $color = random_color();
+		  
           $(document).ready(function(){
              $('#large_box').on('click', function(){
-                $('#large_box div').attr('background-color','random_color();'); 
+				var color = random_color();
+				console.log(color);
+                $('#large_box div').css("background-color", random_color() );    				
+				console.log('large box was clicked');
+				
              });
              $('.side_box').on('click', function(event){
                 event.stopPropagation();
-				$(this).siblings().attr('background-color','random_color();');
+				$(this).siblings().css("background-color", random_color() );
+				console.log('side box was clicked');
              });
              $('.middle_box').on('click', function(event){
                 event.stopPropagation();
-				$('#large_box').attr('background-color','random_color();');
+				$('#large_box').css("background-color", random_color() );
+				console.log('middle box was clicked');
              });
           });
       </script>
@@ -40,7 +48,7 @@
           #large_box {
              margin: 0px auto;
              margin-top: 30px;
-             background-color: lightblue;
+             background-color: #555;
              width: 1200px;
              height: 300px; 
           }
